@@ -25,7 +25,6 @@
 
         .header-wrap { display: flex; justify-content: space-between; align-items: center; margin: 30px 0 20px; }
         
-        /* 제목 공통 효과 */
         .header h1 { 
             font-size: 1.6rem; font-weight: 900; letter-spacing: -1.5px; text-transform: uppercase;
             cursor: pointer;
@@ -35,7 +34,6 @@
             -webkit-text-fill-color: transparent;
             animation: shine 3s linear infinite;
         }
-        /* 라이트모드 제목 효과 강제 적용 */
         [data-theme='light'] .header h1 {
             background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
             background-size: 200% auto;
@@ -45,8 +43,14 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
         
-        .wave-emoji { display: inline-block; animation: heartbeat 1.5s ease-in-out infinite; margin-left: 5px; }
-        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+        /* 이퀄라이저 애니메이션 */
+        .equalizer { display: inline-flex; align-items: flex-end; gap: 3px; height: 20px; margin-left: 10px; vertical-align: middle; }
+        .bar { width: 4px; background: var(--accent); animation: dance 1s ease infinite; }
+        .bar:nth-child(1) { animation-duration: 0.8s; height: 10px; }
+        .bar:nth-child(2) { animation-duration: 1.2s; height: 18px; }
+        .bar:nth-child(3) { animation-duration: 0.9s; height: 14px; }
+        .bar:nth-child(4) { animation-duration: 1.1s; height: 20px; }
+        @keyframes dance { 0%, 100% { transform: scaleY(0.5); opacity: 0.5; } 50% { transform: scaleY(1); opacity: 1; } }
 
         #theme-toggle { padding: 6px 14px; font-size: 0.75rem; background: var(--accent); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
         
@@ -69,7 +73,11 @@
 
     <div class="header-wrap">
         <header class="header">
-            <h1 onclick="resetAll()">OCEAN LABEL <span class="wave-emoji">🌊</span></h1>
+            <h1 onclick="resetAll()">OCEAN LABEL 
+                <div class="equalizer">
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                </div>
+            </h1>
         </header>
         <button id="theme-toggle">MODE</button>
     </div>
@@ -95,16 +103,16 @@
     </footer>
 
 <script>
-    const allSigs = [ /* 이전 리스트 동일 */ ];
+    const allSigs = [ /* 데이터 리스트 동일 */ ];
 
-    // 테마 토글
+    // 테마 전환
     document.getElementById('theme-toggle').addEventListener('click', () => {
         const doc = document.documentElement;
-        const currentTheme = doc.getAttribute('data-theme');
-        doc.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+        const theme = doc.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        doc.setAttribute('data-theme', theme);
     });
 
-    // 검색과 필터가 함께 동작하는 핵심 함수
+    // 렌더링 로직 (통합 검색 지원)
     function updateList() {
         const query = document.getElementById('search').value.toLowerCase();
         const activeBtn = document.querySelector('.btn.active');
@@ -120,15 +128,11 @@
         })
         .sort((a, b) => a.price - b.price)
         .forEach(item => {
-            list.innerHTML += `
-                <div class="card">
-                    <span class="name">${item.name}</span>
-                    <span class="price">₩${item.price.toLocaleString()}</span>
-                </div>`;
+            list.innerHTML += `<div class="card"><span class="name">${item.name}</span><span class="price">₩${item.price.toLocaleString()}</span></div>`;
         });
     }
 
-    // 초기화 버튼
+    // 초기화
     function resetAll() {
         document.getElementById('search').value = '';
         document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
@@ -136,19 +140,14 @@
         updateList();
     }
 
-    // 이벤트 리스너 등록
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            updateList();
-        });
-    });
+    document.querySelectorAll('.btn').forEach(btn => btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        updateList();
+    }));
 
     document.getElementById('search').addEventListener('input', updateList);
-
-    // 초기 실행
-    updateList();
+    updateList(); // 초기 로딩
 </script>
 </body>
 </html>
