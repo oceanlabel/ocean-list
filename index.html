@@ -61,7 +61,16 @@
         .btn { padding: 8px 16px; background: var(--card-bg); border: 1px solid var(--border); color: var(--text); border-radius: 8px; cursor: pointer; font-size: 0.75rem; font-weight: 600; }
         .btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-        .list { display: grid; gap: 8px; margin-bottom: 40px; }
+        .list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+} @media (max-width: 768px) {
+    .list {
+        grid-template-columns: 1fr;
+    }
+}
         .card { background: var(--card-bg); padding: 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .name { font-size: 0.9rem; font-weight: 500; }
         .price { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
