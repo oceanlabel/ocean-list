@@ -176,15 +176,27 @@
         // 검색 로직 개선: 
         // 1. 전체 데이터(allSigs)에서 검색어(query)로 먼저 필터링
         // 2. 그 결과 중에서 선택된 카테고리(filter)에 맞는 것만 정렬해서 표시
-        allSigs.filter(item => {
-            const matchesQuery = item.name.toLowerCase().includes(query);
-            const matchesFilter = (filter === 'all' || item.category === filter);
-            return matchesQuery && matchesFilter;
-        })
-        .sort((a, b) => a.price - b.price)
-        .forEach(item => {
-            list.innerHTML += `<div class="card"><span class="name">${item.name}</span><span class="price">₩${item.price.toLocaleString()}</span></div>`;
-        });
+      allSigs
+.filter(item => {
+    const matchesQuery = item.name.toLowerCase().includes(query);
+    const matchesFilter = (filter === 'all' || item.category === filter);
+    return matchesQuery && matchesFilter;
+})
+.sort((a, b) => a.price - b.price)
+.forEach(item => {
+
+    list.innerHTML += `
+    <div class="card" style="display:flex;align-items:center;gap:10px;">
+        ${item.imgUrl ? `
+            <img src="${item.imgUrl}" 
+                 style="width:50px;height:50px;border-radius:8px;object-fit:cover;">
+        ` : ""}
+
+        <span class="name">${item.name}</span>
+        <span class="price">₩${item.price.toLocaleString()}</span>
+    </div>
+    `;
+});
     }
 
     function resetAll() {
