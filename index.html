@@ -68,12 +68,17 @@
     margin-bottom: 40px;
 } @media (max-width: 768px) {
     .list {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 }
-        .card { background: var(--card-bg); padding: 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+     .card { background: var(--card-bg); padding: 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .name { font-size: 0.9rem; font-weight: 500; }
         .price { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
+        .card img {
+    width: 100px;
+    height: 60px;
+}
 
         footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 40px; }
         .card {
