@@ -13,12 +13,13 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --border: #333;
         }
+        /* 고급스러운 딥 네이비 테마 */
         [data-theme='light'] {
-            --bg: #ffffff;
-            --text: #1a1a1a;
-            --accent: #1e3a8a;
-            --card-bg: #f3f4f6;
-            --border: #e5e7eb;
+            --bg: #f8fafc;
+            --text: #1e293b; 
+            --accent: #312e81; /* 고급스러운 짙은 남색 */
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; transition: 0.3s; }
         body { background: var(--bg); color: var(--text); padding: 20px; line-height: 1.5; max-width: 600px; margin: auto; }
@@ -35,7 +36,7 @@
             animation: shine 3s linear infinite;
         }
         [data-theme='light'] .header h1 {
-            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
+            background: linear-gradient(90deg, #312e81, #4338ca, #312e81);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -43,7 +44,6 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
         
-        /* 이퀄라이저 애니메이션 */
         .equalizer { display: inline-flex; align-items: flex-end; gap: 3px; height: 20px; margin-left: 10px; vertical-align: middle; }
         .bar { width: 4px; background: var(--accent); animation: dance 1s ease infinite; }
         .bar:nth-child(1) { animation-duration: 0.8s; height: 10px; }
@@ -62,11 +62,11 @@
         .btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
         .list { display: grid; gap: 8px; margin-bottom: 40px; }
-        .card { background: var(--card-bg); padding: 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); }
+        .card { background: var(--card-bg); padding: 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
         .name { font-size: 0.9rem; font-weight: 500; }
         .price { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
 
-        footer { text-align: center; padding: 40px 20px; color: #888; font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 40px; }
+        footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -103,16 +103,16 @@
     </footer>
 
 <script>
-    const allSigs = [ /* 데이터 리스트 동일 */ ];
+    const allSigs = [
+        { name: "닭비트", price: 9999, category: "1-5" }, { name: "외모체크", price: 10000, category: "1-5" }, { name: "PAPAPA", price: 12000, category: "1-5" }, { name: "괜찮아딩딩딩", price: 12500, category: "1-5" }, { name: "도마도마", price: 20000, category: "1-5" }, { name: "핫해", price: 21000, category: "1-5" }, { name: "옴브리뉴", price: 22000, category: "1-5" }, { name: "이찬오빠", price: 23000, category: "1-5" }, { name: "버터플라이", price: 24000, category: "1-5" }, { name: "마라탕후루", price: 25000, category: "1-5" }, { name: "힙합보단사랑", price: 30000, category: "1-5" }, { name: "바니바니", price: 31000, category: "1-5" }, { name: "만만하니", price: 32000, category: "1-5" }, { name: "오버드라이브(앙탈챌린지)", price: 33000, category: "1-5" }, { name: "개굴개굴", price: 34500, category: "1-5" }, { name: "색소폰매직", price: 35500, category: "1-5" }, { name: "키세스", price: 36000, category: "1-5" }, { name: "홀드업", price: 37000, category: "1-5" }, { name: "슈퍼그럼요", price: 38000, category: "1-5" }, { name: "핑크보이즈", price: 39000, category: "1-5" }, { name: "사랑스러워", price: 40000, category: "1-5" }, { name: "파이팅해야지", price: 40500, category: "1-5" }, { name: "봉덕레이저", price: 41000, category: "1-5" }, { name: "뽁뽁이", price: 41500, category: "1-5" }, { name: "모시모시", price: 42000, category: "1-5" }, { name: "귀여워서미안해", price: 42500, category: "1-5" }, { name: "쌔끈빠끈", price: 44000, category: "1-5" }, { name: "팬서비스", price: 44500, category: "1-5" }, { name: "모찌", price: 45000, category: "1-5" }, { name: "거짓말", price: 45500, category: "1-5" }, { name: "홀리몰리", price: 46000, category: "1-5" }, { name: "누난너무예뻐", price: 50000, category: "1-5" }, { name: "게임오버", price: 51500, category: "5-9" }, { name: "구찌챌린지", price: 52000, category: "5-9" }, { name: "락유바디", price: 54000, category: "5-9" }, { name: "상남자", price: 59000, category: "5-9" }, { name: "사쿠란보", price: 66000, category: "5-9" }, { name: "소다팝", price: 66000, category: "5-9" }, { name: "오빠달려붕붕", price: 70000, category: "5-9" }, { name: "드라군", price: 71000, category: "5-9" }, { name: "결국너야", price: 71500, category: "5-9" }, { name: "러브샷", price: 72000, category: "5-9" }, { name: "EDM", price: 77000, category: "5-9" }, { name: "나랑사귈래", price: 82000, category: "5-9" }, { name: "자기야화풀어", price: 86000, category: "5-9" }, { name: "LSD", price: 88000, category: "5-9" }, { name: "킥드럼베이스", price: 88500, category: "5-9" }, { name: "뱅뱅뱅", price: 88800, category: "5-9" }, { name: "우치다", price: 89000, category: "5-9" }, { name: "터미널", price: 89500, category: "5-9" }, { name: "캐치캐치", price: 96000, category: "5-9" }, { name: "영웅", price: 97000, category: "5-9" }, { name: "UP(호영레이블)", price: 100000, category: "10" }, { name: "캔디", price: 100400, category: "10" }, { name: "이머전시", price: 105000, category: "10" }, { name: "헤비머신건", price: 115000, category: "10" }, { name: "길티", price: 119000, category: "10" }, { name: "솜사탕", price: 120000, category: "10" }, { name: "우리집", price: 125000, category: "10" }, { name: "피리송", price: 130000, category: "10" }, { name: "라부부", price: 135000, category: "10" }, { name: "크레이지러브", price: 140000, category: "10" }, { name: "판타스틱베이비", price: 149000, category: "10" }, { name: "톰하디", price: 150000, category: "10" }, { name: "너뿐이야", price: 151000, category: "10" }, { name: "SEE바레쓰고", price: 152500, category: "10" }, { name: "할것", price: 155000, category: "10" }, { name: "큰거온다", price: 160000, category: "10" }, { name: "게이바", price: 169000, category: "10" }, { name: "코카인", price: 201000, category: "20" }, { name: "헨타이", price: 210000, category: "20" }, { name: "레드레드", price: 215000, category: "20" }, { name: "LALALA", price: 220000, category: "20" }, { name: "굿보이", price: 225000, category: "20" }, { name: "센세", price: 240000, category: "20" }, { name: "마티니", price: 250000, category: "20" }, { name: "계엄령", price: 270000, category: "20" }, { name: "촉촉착착", price: 330000, category: "20" }, { name: "백갑숙도", price: 500000, category: "20" }, { name: "반포대교", price: 600000, category: "20" }, { name: "사기캐", price: 800000, category: "20" }, { name: "VIP", price: 1000000, category: "vip" }, { name: "VVIP", price: 2000000, category: "vip" }, { name: "SVIP", price: 3000000, category: "vip" }, { name: "ROYAL", price: 5000000, category: "vip" }, { name: "퐁퐁 (도현)", price: 89200, category: "personal" }, { name: "ALL I WANNA DO (우석)", price: 111000, category: "personal" }, { name: "불타오르네 (창현)", price: 118000, category: "personal" }, { name: "쏘리쏘리 (인우)", price: 133000, category: "personal" }, { name: "버터 (지구)", price: 140500, category: "personal" }, { name: "호랑나비 (인우)", price: 144000, category: "personal" }, { name: "치얼업 (태훈)", price: 170000, category: "personal" }, { name: "오늘만 I LOVE U (우기)", price: 177000, category: "personal" }, { name: "피버 (선우)", price: 199000, category: "personal" }, { name: "시간을달려서 (창현)", price: 217000, category: "personal" }, { name: "내일에서기다릴게 (지구)", price: 222000, category: "personal" }, { name: "HER (도현)", price: 252500, category: "personal" }, { name: "으르렁 (승진)", price: 255000, category: "personal" }, { name: "늑대와미녀 (창현)", price: 260000, category: "personal" }, { name: "할리우드액션 (선우)", price: 280000, category: "personal" }, { name: "소리꾼 (우석)", price: 285000, category: "personal" }, { name: "I NEED U (우기)", price: 290000, category: "personal" }, { name: "히트 (선우)", price: 321000, category: "personal" }, { name: "호랑이( 우석)", price: 482000, category: "personal" }
+    ];
 
-    // 테마 전환
     document.getElementById('theme-toggle').addEventListener('click', () => {
         const doc = document.documentElement;
         const theme = doc.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         doc.setAttribute('data-theme', theme);
     });
 
-    // 렌더링 로직 (통합 검색 지원)
     function updateList() {
         const query = document.getElementById('search').value.toLowerCase();
         const activeBtn = document.querySelector('.btn.active');
@@ -120,19 +120,13 @@
         const list = document.getElementById('productList');
         
         list.innerHTML = '';
-        
-        allSigs.filter(item => {
-            const matchFilter = (filter === 'all' || item.category === filter);
-            const matchQuery = item.name.toLowerCase().includes(query);
-            return matchFilter && matchQuery;
-        })
-        .sort((a, b) => a.price - b.price)
-        .forEach(item => {
-            list.innerHTML += `<div class="card"><span class="name">${item.name}</span><span class="price">₩${item.price.toLocaleString()}</span></div>`;
-        });
+        allSigs.filter(item => (filter === 'all' || item.category === filter) && item.name.toLowerCase().includes(query))
+               .sort((a, b) => a.price - b.price)
+               .forEach(item => {
+                   list.innerHTML += `<div class="card"><span class="name">${item.name}</span><span class="price">₩${item.price.toLocaleString()}</span></div>`;
+               });
     }
 
-    // 초기화
     function resetAll() {
         document.getElementById('search').value = '';
         document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
@@ -147,7 +141,7 @@
     }));
 
     document.getElementById('search').addEventListener('input', updateList);
-    updateList(); // 초기 로딩
+    updateList();
 </script>
 </body>
 </html>
