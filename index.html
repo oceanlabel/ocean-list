@@ -15,9 +15,9 @@
         }
         /* 고급스러운 딥 네이비 테마 */
         [data-theme='light'] {
-            --bg: #f8fafc;
-            --text: #1e293b; 
-            --accent: #312e81; /* 고급스러운 짙은 남색 */
+            --bg: #f1f5f9;      /* 더 차분한 배경색 */
+            --text: #1e293b;    /* 짙은 Slate 컬러 */
+            --accent: #312e81;  /* 고급스러운 딥 네이비 포인트 */
             --card-bg: #ffffff;
             --border: #e2e8f0;
         }
@@ -62,7 +62,7 @@
         .btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
         .list { display: grid; gap: 8px; margin-bottom: 40px; }
-        .card { background: var(--card-bg); padding: 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .card { background: var(--card-bg); padding: 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .name { font-size: 0.9rem; font-weight: 500; }
         .price { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
 
@@ -120,11 +120,19 @@
         const list = document.getElementById('productList');
         
         list.innerHTML = '';
-        allSigs.filter(item => (filter === 'all' || item.category === filter) && item.name.toLowerCase().includes(query))
-               .sort((a, b) => a.price - b.price)
-               .forEach(item => {
-                   list.innerHTML += `<div class="card"><span class="name">${item.name}</span><span class="price">₩${item.price.toLocaleString()}</span></div>`;
-               });
+        
+        // 검색 로직 개선: 
+        // 1. 전체 데이터(allSigs)에서 검색어(query)로 먼저 필터링
+        // 2. 그 결과 중에서 선택된 카테고리(filter)에 맞는 것만 정렬해서 표시
+        allSigs.filter(item => {
+            const matchesQuery = item.name.toLowerCase().includes(query);
+            const matchesFilter = (filter === 'all' || item.category === filter);
+            return matchesQuery && matchesFilter;
+        })
+        .sort((a, b) => a.price - b.price)
+        .forEach(item => {
+            list.innerHTML += `<div class="card"><span class="name">${item.name}</span><span class="price">₩${item.price.toLocaleString()}</span></div>`;
+        });
     }
 
     function resetAll() {
