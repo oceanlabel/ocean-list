@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OCEAN LABEL</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <style>
         :root {
             --bg: #050505;
             --text: #ffffff;
-            --accent: #2D7FF9; /* 힙한 일렉트릭 블루 */
-            --card-bg: rgba(255, 255, 255, 0.03);
+            --accent: #2D7FF9;
+            --card-bg: rgba(255, 255, 255, 0.05);
             --border: #333;
         }
         [data-theme='light'] {
@@ -20,13 +21,12 @@
             --border: #ccc;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; transition: 0.3s; }
-        body { background: var(--bg); color: var(--text); padding: 20px; }
+        body { background: var(--bg); color: var(--text); padding: 20px; line-height: 1.5; }
 
         .header-wrap { display: flex; justify-content: space-between; align-items: center; margin: 30px 0 20px; }
         
-        /* 블루 네온 그라데이션 타이틀 */
         .header h1 { 
-            font-size: 2.5rem; font-weight: 900; letter-spacing: -2px; text-transform: uppercase; cursor: pointer;
+            font-size: 1.8rem; font-weight: 900; letter-spacing: -2px; text-transform: uppercase; cursor: pointer;
             background: linear-gradient(90deg, #2D7FF9, #ffffff, #2D7FF9);
             background-size: 200% auto;
             -webkit-background-clip: text;
@@ -35,21 +35,31 @@
         }
         @keyframes shine { to { background-position: 200% center; } }
         
-        .wave-emoji { display: inline-block; animation: heartbeat 1.5s ease-in-out infinite; }
+        .wave-emoji { display: inline-block; animation: heartbeat 1.5s ease-in-out infinite; margin-left: 5px; }
         @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
 
-        #theme-toggle { padding: 8px 16px; background: var(--accent); color: #fff; border: none; border-radius: 20px; cursor: pointer; font-weight: bold; }
-        .search-box { width: 100%; margin-bottom: 20px; }
-        #search { width: 100%; background: var(--card-bg); border: 1px solid var(--border); color: var(--text); padding: 15px; border-radius: 12px; outline: none; }
+        #theme-toggle { padding: 6px 14px; font-size: 0.75rem; background: var(--accent); color: #fff; border: none; border-radius: 20px; cursor: pointer; font-weight: bold; }
         
-        .filters { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 20px; padding-bottom: 10px; }
-        .btn { padding: 8px 18px; background: var(--card-bg); border: 1px solid var(--border); color: var(--text); border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 600; }
+        .search-box { width: 100%; margin-bottom: 20px; }
+        #search { width: 100%; background: var(--card-bg); border: 1px solid var(--border); color: var(--text); padding: 12px; border-radius: 10px; outline: none; font-size: 0.95rem; }
+        
+        .filters { 
+            display: flex; gap: 6px; overflow-x: auto; margin-bottom: 20px; 
+            padding-bottom: 10px; white-space: nowrap; -webkit-overflow-scrolling: touch;
+        }
+        .filters::-webkit-scrollbar { display: none; }
+        
+        .btn { 
+            padding: 6px 14px; background: var(--card-bg); border: 1px solid var(--border); 
+            color: var(--text); border-radius: 20px; cursor: pointer; font-size: 0.75rem; 
+            white-space: nowrap; font-weight: 500;
+        }
         .btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-        .list { display: grid; gap: 10px; }
-        .card { background: var(--card-bg); padding: 18px 20px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(128,128,128,0.2); }
-        .name { font-size: 0.95rem; font-weight: 500; }
-        .price { color: var(--accent); font-weight: 700; font-family: monospace; }
+        .list { display: grid; gap: 8px; }
+        .card { background: var(--card-bg); padding: 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(128,128,128,0.1); }
+        .name { font-size: 0.9rem; font-weight: 500; }
+        .price { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -62,7 +72,7 @@
     </div>
 
     <div class="search-box">
-        <input type="text" id="search" placeholder="검색어를 입력하세요...">
+        <input type="text" id="search" placeholder="시그 검색...">
     </div>
 
     <div class="filters" id="categories">
@@ -71,15 +81,14 @@
         <button class="btn" data-filter="5-9">5-9만</button>
         <button class="btn" data-filter="10">10만대</button>
         <button class="btn" data-filter="20">20만↑</button>
-<button class="btn" data-filter="vip">VIP</button>
-        <button class="btn" data-filter="personal">개인시그</button>
-        
+        <button class="btn" data-filter="vip">VIP</button>
+        <button class="btn" data-filter="personal">개인</button>
     </div>
 
     <div class="list" id="productList"></div>
 
 <script>
-   const allSigs = [
+    const allSigs = [
         { name: "닭비트", price: 9999, category: "1-5" },
         { name: "외모체크", price: 10000, category: "1-5" },
         { name: "PAPAPA", price: 12000, category: "1-5" },
@@ -130,8 +139,8 @@
         { name: "뱅뱅뱅", price: 88800, category: "5-9" },
         { name: "우치다", price: 89000, category: "5-9" },
         { name: "터미널", price: 89500, category: "5-9" },
-        { name: "캐치캐치", price: 96000, category: "10" },
-        { name: "영웅", price: 97000, category: "10" },
+        { name: "캐치캐치", price: 96000, category: "5-9" },
+        { name: "영웅", price: 97000, category: "5-9" },
         { name: "UP(호영레이블)", price: 100000, category: "10" },
         { name: "캔디", price: 100400, category: "10" },
         { name: "이머전시", price: 105000, category: "10" },
@@ -172,7 +181,7 @@
         { name: "버터 (지구)", price: 140500, category: "personal" },
         { name: "호랑나비 (인우)", price: 144000, category: "personal" },
         { name: "치얼업 (태훈)", price: 170000, category: "personal" },
-        { name: "오늘만 I LOVE U (우기)", price: 177000, category:  "personal"},
+        { name: "오늘만 I LOVE U (우기)", price: 177000, category: "personal" },
         { name: "피버 (선우)", price: 199000, category: "personal" },
         { name: "시간을달려서 (창현)", price: 217000, category: "personal" },
         { name: "내일에서기다릴게 (지구)", price: 222000, category: "personal" },
