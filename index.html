@@ -76,6 +76,12 @@
         .price { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
 
         footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 40px; }
+        .card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
     </style>
 </head>
 <body>
@@ -200,7 +206,7 @@
 .forEach(item => {
 
     list.innerHTML += `
-    <div class="card" style="display:flex;align-items:center;gap:10px;">
+    <div class="card">
         ${item.imgUrl ? `
             <img src="${item.imgUrl}" 
                  style="width:166px;height:90px;border-radius:8px;object-fit:cover;">
