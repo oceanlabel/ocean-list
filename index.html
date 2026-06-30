@@ -35,7 +35,11 @@
             cursor: pointer;
         }
         [data-theme='light'] .header h1 {
-            background: #1e3a8a; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: none;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
         }
         @keyframes shine { to { background-position: 200% center; } }
         
@@ -60,15 +64,7 @@
         .name { font-size: 0.9rem; font-weight: 500; }
         .price { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
 
-        /* 하단 여백 대폭 수정 */
-        footer { 
-            text-align: center; 
-            padding: 40px 20px; 
-            color: #888; 
-            font-size: 0.8rem; 
-            border-top: 1px solid var(--border); 
-            margin-top: 40px; 
-        }
+        footer { text-align: center; padding: 40px 20px; color: #888; font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -205,7 +201,7 @@
         { name: "소리꾼 (우석)", price: 285000, category: "personal" },
         { name: "I NEED U (우기)", price: 290000, category: "personal" },
         { name: "히트 (선우)", price: 321000, category: "personal" },
-        { name: "호랑이 (우석)", price: 482000, category: "personal" }
+        { name: "호랑이( 우석)", price: 482000, category: "personal" }
     ];
 
     document.getElementById('theme-toggle').addEventListener('click', () => {
