@@ -32,6 +32,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 3s linear infinite;
+            cursor: pointer;
         }
         [data-theme='light'] .header h1 {
             background: #1e3a8a; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: none;
@@ -66,7 +67,7 @@
 
     <div class="header-wrap">
         <header class="header">
-            <h1>OCEAN LABEL <span class="wave-emoji">🌊</span></h1>
+            <h1 onclick="resetAll()">OCEAN LABEL <span class="wave-emoji">🌊</span></h1>
         </header>
         <button id="theme-toggle">MODE</button>
     </div>
@@ -203,6 +204,13 @@
         const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', theme);
     });
+
+    function resetAll() {
+        document.getElementById('search').value = '';
+        document.querySelector('.btn.active').classList.remove('active');
+        document.querySelector('[data-filter="all"]').classList.add('active');
+        render('all', '');
+    }
 
     function render(filter = 'all', query = '') {
         const list = document.getElementById('productList');
