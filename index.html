@@ -109,6 +109,33 @@
         .card:hover { transform:translateY(-2px); border-color:#2D7FF9; }
         .card img { width:100%; aspect-ratio:16/9; object-fit:cover; transition:.35s ease; }
         .card:hover img { transform:scale(1.04); }
+.card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: .25s ease;
+    display: flex;
+    flex-direction: column;
+}
+.card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(45,127,249,.12),
+        transparent 60%
+    );
+    opacity:0;
+    transition:.35s;
+    pointer-events:none;
+}
+
+.card:hover::after{
+    opacity:1;
+}
 
         .info { padding:12px; display:flex; flex-direction:column; align-items:center; gap:6px; flex-grow:1; text-align: center; }
         .name { font-size:.92rem; font-weight:600; line-height:1.45; }
