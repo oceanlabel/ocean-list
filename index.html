@@ -12,64 +12,19 @@
             --accent: #2D7FF9;
             --card-bg: rgba(255, 255, 255, 0.05);
             --border: #333;
-
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; transition: 0.3s; }
         body { background: var(--bg); color: var(--text); padding: 20px; line-height: 1.5; max-width: 600px; margin: auto; }
 
-.header-wrap{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    margin:40px 0 35px;
-}
-        
-.header h1{
-    font-size:2.5rem;
-    font-weight:900;
-    letter-spacing:-2px;
-    text-transform:uppercase;
-    cursor:pointer;
-    line-height:1;
-
-    background:linear-gradient(
-        90deg,
-        #ffffff 0%,
-        #ffffff 35%,
-        #7fb6ff 50%,
-        #ffffff 65%,
-        #ffffff 100%
-    );
-    background-size:250% auto;
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    animation:shine 7s linear infinite;
-}
+        .header-wrap { display:flex; justify-content:space-between; align-items:flex-start; margin:40px 0 35px; }
+        .header h1 { font-size:2.5rem; font-weight:900; letter-spacing:-2px; text-transform:uppercase; cursor:pointer; line-height:1;
+            background:linear-gradient(90deg, #ffffff 0%, #ffffff 35%, #7fb6ff 50%, #ffffff 65%, #ffffff 100%);
+            background-size:250% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:shine 7s linear infinite; }
         @keyframes shine { to { background-position: 200% center; } }
 
-[data-theme='light']{
-    --bg:#fafafa;
-    --text:#111111;
-    --accent:#2D7FF9;
-    --card-bg:#ffffff;
-    --border:#ececec;
-}
-[data-theme='light'] .header h1{
-    background:linear-gradient(
-        90deg,
-        #111111 0%,
-        #111111 35%,
-        #2D7FF9 50%,
-        #111111 65%,
-        #111111 100%
-    );
-    background-size:250% auto;
+        [data-theme='light'] { --bg:#fafafa; --text:#111111; --accent:#2D7FF9; --card-bg:#ffffff; --border:#ececec; }
+        [data-theme='light'] .header h1 { background:linear-gradient(90deg, #111111 0%, #111111 35%, #2D7FF9 50%, #111111 65%, #111111 100%); background-size:250% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
         .equalizer { display: inline-flex; align-items: flex-end; gap: 3px; height: 20px; margin-left: 10px; vertical-align: middle; }
         .bar { width: 4px; background: var(--accent); animation: dance 1s ease infinite; }
         .bar:nth-child(1) { animation-duration: 0.8s; height: 10px; }
@@ -78,99 +33,27 @@
         .bar:nth-child(4) { animation-duration: 1.1s; height: 20px; }
         @keyframes dance { 0%, 100% { transform: scaleY(0.5); opacity: 0.5; } 50% { transform: scaleY(1); opacity: 1; } }
 
-#theme-toggle{
-    background:none;
-    border:none;
-    color:#777;
-    font-size:.72rem;
-    font-weight:700;
-    letter-spacing:.25em;
-    cursor:pointer;
-    padding:0;
-    transition:.2s;
-}
-
-#theme-toggle:hover{
-    color:var(--text);
-}
+        #theme-toggle { background:none; border:none; color:#777; font-size:.72rem; font-weight:700; letter-spacing:.25em; cursor:pointer; padding:0; }
+        #theme-toggle:hover { color:var(--text); }
         
         .search-box { width: 100%; margin-bottom: 20px; }
-#search{
-    width:100%;
-    background:transparent;
-    border:none;
-    border-bottom:1px solid rgba(255,255,255,.12);
-    color:var(--text);
-    padding:14px 2px;
-    border-radius:0;
-    outline:none;
-    font-size:.95rem;
-    transition:.25s;
-}
-[data-theme='light'] #search{
-    border-bottom:1px solid rgba(0,0,0,.12);
-}
-
-[data-theme='light'] #search:focus{
-    border-bottom-color:#312e81;
-}
-
-#search:focus{
-    border-bottom-color:#2D7FF9;
-}
+        #search { width:100%; background:transparent; border:none; border-bottom:1px solid rgba(255,255,255,.12); color:var(--text); padding:14px 2px; outline:none; font-size:.95rem; }
+        [data-theme='light'] #search { border-bottom:1px solid rgba(0,0,0,.12); }
+        #search:focus { border-bottom-color:#2D7FF9; }
         
         .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; justify-content: center; }
         .btn { padding: 8px 16px; background: var(--card-bg); border: 1px solid var(--border); color: var(--text); border-radius: 8px; cursor: pointer; font-size: 0.75rem; font-weight: 600; }
         .btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-       .list{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-    margin-bottom:40px;
-}
-.card{
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    transition: .25s ease;
-}
-.card:hover{
-    transform:translateY(-2px);
-    border-color:#2D7FF9;
-}
+        .list { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:40px; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: .25s ease; display: flex; flex-direction: column; }
+        .card:hover { transform:translateY(-2px); border-color:#2D7FF9; }
+        .card img { width:100%; aspect-ratio:16/9; object-fit:cover; transition:.35s ease; }
+        .card:hover img { transform:scale(1.04); }
 
-.card img{
-    width:100%;
-    aspect-ratio:16/9;
-    object-fit:cover;
-    transition:.35s ease;
-}
-
-.card:hover img{
-    transform:scale(1.04);
-}
-
-.info{
-    padding:10px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:6px;
-}
-
-.name{
-    font-size:.92rem;
-    font-weight:600;
-    line-height:1.45;
-}
-.price{
-    color:#9fb8ff;
-    font-size:.82rem;
-    font-weight:700;
-    letter-spacing:.05em;
-}
+        .info { padding:12px; display:flex; flex-direction:column; align-items:center; gap:6px; flex-grow:1; text-align: center; }
+        .name { font-size:.92rem; font-weight:600; line-height:1.45; }
+        .price { color:#9fb8ff; font-size:.82rem; font-weight:700; letter-spacing:.05em; }
         footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 40px; }
     </style>
 </head>
@@ -203,144 +86,136 @@
 
     <div class="list" id="productList"></div>
 
-    <footer>
-        Created by | OCEAN LABEL 송매력
-    </footer>
+    <footer>Created by | OCEAN LABEL 송매력</footer>
 
 <script>
     const allSigs = [
-{ name: "닭비트", price: 9999, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/000.png" },
-  { name: "외모체크", price: 10000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/001.png" },
-  { name: "화장실", price: 11900, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/002.png" },
-  { name: "PAPAPA", price: 12000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/003.png" },
-  { name: "괜찮아딩딩딩", price: 12500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/004.png" },
-  { name: "도마도마", price: 20000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/005.png" },
-  { name: "핫해", price: 21000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/006.png" },
-  { name: "옴브리뉴", price: 22000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/007.png" },
-  { name: "이찬오빠", price: 23000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/008.png" },
-  { name: "버터플라이", price: 24000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/009.png" },
-  { name: "마라탕후루", price: 25000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/010.png" },
-  { name: "노크", price: 29000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/132.png" },
-  { name: "힙합보단사랑", price: 30000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/011.png" },
-  { name: "바니바니", price: 31000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/012.png" },
-  { name: "만만하니", price: 32000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/013.png" },
-  { name: "오버드라이브", price: 33000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/014.png" },
-  { name: "개굴개굴", price: 34500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/015.png" },
-   { name: "사마귀", price: 35000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/133.png" },
-  { name: "색소폰매직", price: 35500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/016.png" },
-  { name: "키세스", price: 36000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/017.png" },
-  { name: "홀드업", price: 37000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/018.png" },
-  { name: "슈퍼그럼요", price: 38000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/019.png" },
-  { name: "핑크보이즈", price: 39000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/020.png" },
-  { name: "사랑스러워", price: 40000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/021.png" },
-  { name: "파이팅해야지", price: 40500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/022.png" },
-  { name: "봉덕레이저", price: 41000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/023.png" },
-  { name: "뽁뽁이", price: 41500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/024.png" },
-  { name: "모시모시", price: 42000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/025.png" },
-  { name: "귀여워서미안해", price: 42500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/026.png" },
-  { name: "쌔끈빠끈", price: 44000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/027.png" },
-  { name: "팬서비스", price: 44500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/028.png" },
-  { name: "모찌모찌", price: 45000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/029.png" },
-  { name: "거짓말", price: 45500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/030.png" },
-  { name: "홀리몰리", price: 46000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/031.png" },
-  { name: "링딩동", price: 47000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/033.png" },
-  { name: "좋아좋아", price: 49000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/134.png" },
-  { name: "누난너무예뻐", price: 50000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/034.png" },
-
-  // 5-9 (50,001 ~ 99,999)
-  { name: "꼬마선장", price: 51000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/035.png" },
-  { name: "게임오버", price: 51500, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/036.png" },
-  { name: "구찌챌린지", price: 52000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/037.png" },
-  { name: "첫눈", price: 53000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/038.png" },
-  { name: "락유바디", price: 54000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/039.png" },
-  { name: "역도", price: 55000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/135.png" },
-  { name: "광어", price: 56000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/136.png" },
-  { name: "푸른산호초", price: 57000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/041.png" },
- { name: "좋아해", price: 58000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/137.png" },
-  { name: "상남자", price: 59000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/042.png" },
-  { name: "테디베어", price: 60000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/043.png" },
-  { name: "사쿠란보", price: 65000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/044.png" },
-  { name: "소다팝", price: 66000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/045.png" },
-  { name: "오빠달려붕붕", price: 70000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/047.png" },
-  { name: "드라군", price: 71000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/048.png" },
-  { name: "결국너야", price: 71500, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/049.png" },
-  { name: "러브샷", price: 72000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/050.png" },
-  { name: "EDM", price: 77000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/051.png" },
-  { name: "바람피면D져", price: 79000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/054.png" },
-  { name: "나랑사귈래", price: 82000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/057.png" },
-  { name: "전야", price: 85000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/058.png" },
-  { name: "자기야화풀어", price: 86000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/059.png" },
-  { name: "OMG", price: 87000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/060.png" },
-  { name: "LSD", price: 88000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/061.png" },
-  { name: "킥드럼베이스", price: 88500, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/062.png" },
-  { name: "뱅뱅뱅", price: 88800, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/063.png" },
-  { name: "우치다", price: 89000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/065.png" },
-  { name: "터미널", price: 89500, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/067.png" },
-  { name: "제로투", price: 91000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/069.png" },
-  { name: "슥삭", price: 95000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/071.png" },
-  { name: "캐치캐치", price: 96000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/073.png" },
-  { name: "영웅", price: 97000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/074.png" },
-
-  // 10
-  { name: "UP(호영레이블)", price: 100000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/075.png" },
-  { name: "캔디", price: 100400, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/076.png" },
-  { name: "이머전시", price: 105000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/077.png" },
-  { name: "헤비머신건", price: 115000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/080.png" },
-  { name: "길티", price: 119000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/082.png" },
-  { name: "솜사탕", price: 120000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/083.png" },
-  { name: "우리집", price: 125000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/084.png" },
-  { name: "피리송", price: 130000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/085.png" },
-  { name: "라부부", price: 135000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/087.png" },
-  { name: "크레이지러브", price: 140000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/088.png" },
-  { name: "판타스틱베이비", price: 149000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/091.png" },
-  { name: "톰하디", price: 150000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/092.png" },
-  { name: "너뿐이야", price: 151000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/093.png" },
-  { name: "SEE바레쓰고", price: 152500, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/094.png" },
-  { name: "할것", price: 155000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/095.png" },
-  { name: "큰거온다", price: 160000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/096.png" },
-  { name: "게이바", price: 169000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/097.png" },
-{ name: "첫만남은 계획대로", price: 188000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/138.png" },
-
-  // 20
-  { name: "코카인", price: 201000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/101.png" },
-  { name: "헨타이", price: 210000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/102.png" },
-  { name: "레드레드", price: 215000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/103.png" },
-  { name: "LALALA", price: 220000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/105.png" },
-  { name: "굿보이", price: 225000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/107.png" },
- { name: "살아있네", price: 230000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/139.png" },
-  { name: "센세", price: 240000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/108.png" },
-  { name: "마티니", price: 250000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/109.png" },
-  { name: "계엄령", price: 270000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/112.png" },
-  { name: "질풍가도", price: 300000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/119.png" },
-  { name: "파티트레인", price: 310000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/117.png" },
-  { name: "촉촉착착", price: 330000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/141.png" },
-  { name: "백갑숙도", price: 500000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/123.png" },
-  { name: "반포대교", price: 600000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/124.png" },
-  { name: "사기캐", price: 800000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/126.png" },
-  { name: "VIP", price: 1000000, category: "VIP", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/127.gif" },
-  { name: "VVIP", price: 2000000, category: "VIP", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/128.gif" },
-  { name: "SVIP", price: 3000000, category: "VIP", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/130.gif" },
-  { name: "ROYAL", price: 5000000, category: "VIP", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/129.gif" },
-{ name: "퐁퐁 (도현)", price: 89200, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/066.png" }, 
-{ name: "ALL I WANNA DO (우석)", price: 111000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/079.png" },
-{ name: "불타오르네 (창현)", price: 118000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/081.png" }, 
-{ name: "쏘리쏘리 (인우)", price: 133000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/086.png" }, 
-{ name: "버터 (지구)", price: 140500, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/089.png" }, 
-{ name: "호랑나비 (인우)", price: 144000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/090.png" },
- { name: "치얼업 (태훈)", price: 170000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/098.png" }, 
-{ name: "오늘만 (우기)", price: 177000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/099.png" },
- { name: "피버 (선우)", price: 199000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/100.png" }, 
-{ name: "시간을 달려서 (창현)", price: 217000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/104.png" },
- { name: "내일에서 기다릴게 (지구)", price: 222000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/106.png" },
- { name: "HER (도현)", price: 252500, category: "personal", imgUrl:"https://raw.githubusercontent.com/oceanlabel/ocean-list/main/110.png" }, 
-{ name: "으르렁 (승진)", price: 255000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/140.png" },
-{ name: "늑대와 미녀 (창현)", price: 260000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/111.png" }, 
-{ name: "할리우드 액션 (선우)", price: 280000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/113.png" }, 
-{  name: "소리꾼 (우석)", price: 285000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/114.png" }, 
-{  name: "I NEED U (우기)", price: 290000, category: "personal", imgUrl:"https://raw.githubusercontent.com/oceanlabel/ocean-list/main/115.png" }, 
-{ name: "히트 (선우)", price: 321000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/118.png" },
-{ name: "호랑이 (우석)",price: 482000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/122.png"},
-];
+        { name: "닭비트", price: 9999, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/000.png" },
+        { name: "외모체크", price: 10000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/001.png" },
+        { name: "화장실", price: 11900, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/002.png" },
+        { name: "PAPAPA", price: 12000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/003.png" },
+        { name: "괜찮아딩딩딩", price: 12500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/004.png" },
+        { name: "도마도마", price: 20000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/005.png" },
+        { name: "핫해", price: 21000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/006.png" },
+        { name: "옴브리뉴", price: 22000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/007.png" },
+        { name: "이찬오빠", price: 23000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/008.png" },
+        { name: "버터플라이", price: 24000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/009.png" },
+        { name: "마라탕후루", price: 25000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/010.png" },
+        { name: "노크", price: 29000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/132.png" },
+        { name: "힙합보단사랑", price: 30000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/011.png" },
+        { name: "바니바니", price: 31000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/012.png" },
+        { name: "만만하니", price: 32000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/013.png" },
+        { name: "오버드라이브", price: 33000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/014.png" },
+        { name: "개굴개굴", price: 34500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/015.png" },
+        { name: "사마귀", price: 35000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/133.png" },
+        { name: "색소폰매직", price: 35500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/016.png" },
+        { name: "키세스", price: 36000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/017.png" },
+        { name: "홀드업", price: 37000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/018.png" },
+        { name: "슈퍼그럼요", price: 38000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/019.png" },
+        { name: "핑크보이즈", price: 39000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/020.png" },
+        { name: "사랑스러워", price: 40000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/021.png" },
+        { name: "파이팅해야지", price: 40500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/022.png" },
+        { name: "봉덕레이저", price: 41000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/023.png" },
+        { name: "뽁뽁이", price: 41500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/024.png" },
+        { name: "모시모시", price: 42000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/025.png" },
+        { name: "귀여워서미안해", price: 42500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/026.png" },
+        { name: "쌔끈빠끈", price: 44000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/027.png" },
+        { name: "팬서비스", price: 44500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/028.png" },
+        { name: "모찌모찌", price: 45000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/029.png" },
+        { name: "거짓말", price: 45500, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/030.png" },
+        { name: "홀리몰리", price: 46000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/031.png" },
+        { name: "링딩동", price: 47000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/033.png" },
+        { name: "좋아좋아", price: 49000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/134.png" },
+        { name: "누난너무예뻐", price: 50000, category: "1-5", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/034.png" },
+        { name: "꼬마선장", price: 51000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/035.png" },
+        { name: "게임오버", price: 51500, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/036.png" },
+        { name: "구찌챌린지", price: 52000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/037.png" },
+        { name: "첫눈", price: 53000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/038.png" },
+        { name: "락유바디", price: 54000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/039.png" },
+        { name: "역도", price: 55000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/135.png" },
+        { name: "광어", price: 56000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/136.png" },
+        { name: "푸른산호초", price: 57000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/041.png" },
+        { name: "좋아해", price: 58000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/137.png" },
+        { name: "상남자", price: 59000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/042.png" },
+        { name: "테디베어", price: 60000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/043.png" },
+        { name: "사쿠란보", price: 65000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/044.png" },
+        { name: "소다팝", price: 66000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/045.png" },
+        { name: "오빠달려붕붕", price: 70000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/047.png" },
+        { name: "드라군", price: 71000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/048.png" },
+        { name: "결국너야", price: 71500, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/049.png" },
+        { name: "러브샷", price: 72000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/050.png" },
+        { name: "EDM", price: 77000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/051.png" },
+        { name: "바람피면D져", price: 79000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/054.png" },
+        { name: "나랑사귈래", price: 82000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/057.png" },
+        { name: "전야", price: 85000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/058.png" },
+        { name: "자기야화풀어", price: 86000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/059.png" },
+        { name: "OMG", price: 87000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/060.png" },
+        { name: "LSD", price: 88000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/061.png" },
+        { name: "킥드럼베이스", price: 88500, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/062.png" },
+        { name: "뱅뱅뱅", price: 88800, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/063.png" },
+        { name: "우치다", price: 89000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/065.png" },
+        { name: "터미널", price: 89500, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/067.png" },
+        { name: "제로투", price: 91000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/069.png" },
+        { name: "슥삭", price: 95000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/071.png" },
+        { name: "캐치캐치", price: 96000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/073.png" },
+        { name: "영웅", price: 97000, category: "5-9", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/074.png" },
+        { name: "UP(호영레이블)", price: 100000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/075.png" },
+        { name: "캔디", price: 100400, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/076.png" },
+        { name: "이머전시", price: 105000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/077.png" },
+        { name: "헤비머신건", price: 115000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/080.png" },
+        { name: "길티", price: 119000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/082.png" },
+        { name: "솜사탕", price: 120000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/083.png" },
+        { name: "우리집", price: 125000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/084.png" },
+        { name: "피리송", price: 130000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/085.png" },
+        { name: "라부부", price: 135000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/087.png" },
+        { name: "크레이지러브", price: 140000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/088.png" },
+        { name: "판타스틱베이비", price: 149000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/091.png" },
+        { name: "톰하디", price: 150000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/092.png" },
+        { name: "너뿐이야", price: 151000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/093.png" },
+        { name: "SEE바레쓰고", price: 152500, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/094.png" },
+        { name: "할것", price: 155000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/095.png" },
+        { name: "큰거온다", price: 160000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/096.png" },
+        { name: "게이바", price: 169000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/097.png" },
+        { name: "첫만남은 계획대로", price: 188000, category: "10", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/138.png" },
+        { name: "코카인", price: 201000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/101.png" },
+        { name: "헨타이", price: 210000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/102.png" },
+        { name: "레드레드", price: 215000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/103.png" },
+        { name: "LALALA", price: 220000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/105.png" },
+        { name: "굿보이", price: 225000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/107.png" },
+        { name: "살아있네", price: 230000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/139.png" },
+        { name: "센세", price: 240000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/108.png" },
+        { name: "마티니", price: 250000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/109.png" },
+        { name: "계엄령", price: 270000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/112.png" },
+        { name: "질풍가도", price: 300000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/119.png" },
+        { name: "파티트레인", price: 310000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/117.png" },
+        { name: "촉촉착착", price: 330000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/141.png" },
+        { name: "백갑숙도", price: 500000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/123.png" },
+        { name: "반포대교", price: 600000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/124.png" },
+        { name: "사기캐", price: 800000, category: "20", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/126.png" },
+        { name: "VIP", price: 1000000, category: "VIP", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/127.gif" },
+        { name: "VVIP", price: 2000000, category: "VIP", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/128.gif" },
+        { name: "SVIP", price: 3000000, category: "VIP", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/130.gif" },
+        { name: "ROYAL", price: 5000000, category: "VIP", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/129.gif" },
+        { name: "퐁퐁 (도현)", price: 89200, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/066.png" },
+        { name: "ALL I WANNA DO (우석)", price: 111000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/079.png" },
+        { name: "불타오르네 (창현)", price: 118000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/081.png" },
+        { name: "쏘리쏘리 (인우)", price: 133000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/086.png" },
+        { name: "버터 (지구)", price: 140500, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/089.png" },
+        { name: "호랑나비 (인우)", price: 144000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/090.png" },
+        { name: "치얼업 (태훈)", price: 170000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/098.png" },
+        { name: "오늘만 (우기)", price: 177000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/099.png" },
+        { name: "피버 (선우)", price: 199000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/100.png" },
+        { name: "시간을 달려서 (창현)", price: 217000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/104.png" },
+        { name: "내일에서 기다릴게 (지구)", price: 222000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/106.png" },
+        { name: "HER (도현)", price: 252500, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/110.png" },
+        { name: "으르렁 (승진)", price: 255000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/140.png" },
+        { name: "늑대와 미녀 (창현)", price: 260000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/111.png" },
+        { name: "할리우드 액션 (선우)", price: 280000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/113.png" },
+        { name: "소리꾼 (우석)", price: 285000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/114.png" },
+        { name: "I NEED U (우기)", price: 290000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/115.png" },
+        { name: "히트 (선우)", price: 321000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/118.png" },
+        { name: "호랑이 (우석)", price: 482000, category: "personal", imgUrl: "https://raw.githubusercontent.com/oceanlabel/ocean-list/main/122.png" }
+    ];
 
     document.getElementById('theme-toggle').addEventListener('click', () => {
         const doc = document.documentElement;
@@ -353,33 +228,24 @@
         const activeBtn = document.querySelector('.btn.active');
         const filter = activeBtn ? activeBtn.dataset.filter : 'all';
         const list = document.getElementById('productList');
-        
         list.innerHTML = '';
         
-        // 검색 로직 개선: 
-        // 1. 전체 데이터(allSigs)에서 검색어(query)로 먼저 필터링
-        // 2. 그 결과 중에서 선택된 카테고리(filter)에 맞는 것만 정렬해서 표시
-      allSigs
-.filter(item => {
-    const matchesQuery = item.name.toLowerCase().includes(query);
-    const matchesFilter = (filter === 'all' || item.category === filter);
-    return matchesQuery && matchesFilter;
-})
-.sort((a, b) => a.price - b.price)
-.forEach(item => {
-
-   list.innerHTML += `
-<div class="card">
-    ${item.imgUrl ? `<img src="${item.imgUrl}" alt="${item.name}">` : ""}
-
-    <div class="name" style="${item.name === 'ALL I WANNA DO (우석)' ? 'font-size:0.78rem;' : ''}">
-    ${item.name}
-</div>
-        <div class="price">₩${item.price.toLocaleString()}</div>
-    </div>
-</div>
-`;
-});
+        allSigs.filter(item => {
+            const matchesQuery = item.name.toLowerCase().includes(query);
+            const matchesFilter = (filter === 'all' || item.category === filter);
+            return matchesQuery && matchesFilter;
+        })
+        .sort((a, b) => a.price - b.price)
+        .forEach(item => {
+            list.innerHTML += `
+            <div class="card">
+                ${item.imgUrl ? `<img src="${item.imgUrl}" alt="${item.name}">` : ""}
+                <div class="info">
+                    <div class="name" style="${item.name === 'ALL I WANNA DO (우석)' ? 'font-size:0.78rem;' : ''}">${item.name}</div>
+                    <div class="price">₩${item.price.toLocaleString()}</div>
+                </div>
+            </div>`;
+        });
     }
 
     function resetAll() {
